@@ -1,0 +1,66 @@
+// 通用性設定
+// 顏色
+$primary_color:#F4F2E6;
+$secondary_color:#6accbf;
+// 排版置中flex
+@mixin flex($justify-content,$align-items) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items:$align-items;
+  }
+// 排版置中position
+@mixin position(){
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+body{
+    background: $primary_color;
+}
+// Nadia請從這裡開始
+
+// Andy請從這裡開始 
+
+// Boris start here
+// 頁尾
+#footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    // 頁尾的內容部分
+    .footer_content{
+        // 波浪型裝飾
+        .wave{
+            max-width: 1600px;
+        }
+    }
+    // logo跟頁尾連結
+    .logo{
+        width: 100px;
+    }
+    .logo_and_links{
+        @include position();
+        background: $secondary_color;
+        padding: 65px 58px;
+        width:100%;
+        max-width: 1600px;
+        // flex分散
+        @include flex(space-between,center);
+        .links_group{
+            // flex置中
+            @include flex(center,center);
+            .link{
+                color: white;
+                margin: 0 35px;
+                font-weight: bold;
+                font-size: 24px;
+            }
+        }
+    }
+}
+.wave_img{
+    display: block;
+    width: 100%;
+}
