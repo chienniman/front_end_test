@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- 本頁面使用vue跟bootstrap5 -->
+    <main id="vue_menu">
+      <div class="btn_groups mt-5 pt-5 bg-light">
+        <button class="btn btn-primary me-3" @click="showFreshTea()">
+          調茶飲
+        </button>
+        <button class="btn btn-danger me-3" @click="showHandPick_Tea()">
+          嚴選茶品
+        </button>
+        <button class="btn btn-success me-3" @click="showFreshTea()">
+          牛奶跟果汁
+        </button>
+        <button class="btn btn-warning me-3" @click="showFreshTea()">
+          茶拿鐵
+        </button>
+        <button class="btn btn-light me-3" @click="showFreshTea()">
+          咖啡跟拿鐵
+        </button>
+      </div>
+      <p v-for="i in tempMenu">{{i.teaname}}</p>
+    </main>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //vue新物件建立
+      const viewmodel = Vue.createApp({
+        data() {
+          return {
+            allMenu: [],
+            tempMenu: [],
+            // 調茶飲
+            FreshTea: [
+              {
+                teaname: "阿薩姆紅茶",
+                EngName: "Assam Black Tea",
+                price: "60",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "茉香綠茶",
+                EngName: "Green Tea",
+                price: "60",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "芒果綠茶",
+                EngName: "Mango Green Tea",
+                price: "80",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "葡萄柚綠茶",
+                EngName: "Grapefruit green Tea",
+                price: "80",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "蔓越莓綠茶",
+                EngName: "Cranberry Green Tea",
+                price: "80",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "蜂蜜檸檬綠茶",
+                EngName: "Lemon Honry Green Tea",
+                price: "90",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "奶茶",
+                EngName: "Milk Tea",
+                price: "80",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "香草奶茶",
+                EngName: "Vanilla Milk Tea",
+                price: "80",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "榛果奶茶",
+                EngName: "Hazelnut Milk Tea",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "焦糖奶茶",
+                EngName: "Caramel Milk Tea",
+                price: "90",
+                hot: "true",
+                ice: "true",
+              },
+              {
+                teaname: "太妃糖奶茶",
+                EngName: "Toffee Milk Tea",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+            ],
+            // 手選茶飲
+            HandPick_Tea: [
+              {
+                teaname: "皇家伯爵茶",
+                EngName: "",
+                price: "120",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "有機洋甘菊茶",
+                EngName: "",
+                price: "120",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "百箱花樣水果茶",
+                EngName: "",
+                price: "120",
+                hot: true,
+                ice: false,
+              },
+              {
+                teaname: "萊茵野莓水果茶",
+                EngName: "",
+                price: "150",
+                hot: true,
+                ice: false,
+              },
+            ],
+            // 牛奶跟果汁
+            Milk_and_Juice: [
+              {
+                teaname: "原味鮮奶",
+                EngName: "Original Milk",
+                price: "80",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "香草鮮奶",
+                EngName: "Vanilla Flavor Milk",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "榛果鮮奶",
+                EngName: "Hazelnut Flavor Milk",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "焦糖鮮奶",
+                EngName: "Caramel Flavor Milk",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+              {
+                teaname: "太妃糖鮮奶",
+                EngName: "Toffee Flavor Milk",
+                price: "90",
+                hot: true,
+                ice: true,
+              },
+            ],
+            // 茶拿鐵
+            TeaLatte: [],
+            // 咖啡跟拿鐵
+            Coffee_and_Latte: [],
+          };
+        },
+        methods: {
+          showAllMenu: function () {
+            this.tempMenu = this.allMenu;
+          },
+          showFreshTea: function () {
+            this.tempMenu = this.FreshTea;
+          },
+          showHandPick_Tea: function () {
+            this.tempMenu = this.HandPick_Tea;
+          },
+        },
+        //當vue物件綁定時要執行
+        mounted() {},
+      });
+      //掛載vue物件
+      viewmodel.mount("#vue_menu");
+    </script>
+  </body>
+</html>
